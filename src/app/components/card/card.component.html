@@ -1,0 +1,24 @@
+
+<div *ngIf="datosService.arrContacts.length > 0">
+
+  <h1>Mis contactos</h1>
+  <ion-card>
+    <ion-item>
+      <ion-label>Ver notas:</ion-label>
+      <ion-toggle (ionChange)="datosService.isPresent($event)"></ion-toggle>
+    </ion-item>
+  </ion-card>
+  <div *ngFor="let i of datosService.arrContacts; let r = index">
+
+    <ion-card  [ngClass]="{'man': i.genero ===  'man' , 'women': i.genero === 'women'}" >
+      <ion-card-header>
+        <ion-card-subtitle>{{i.intPhone}}</ion-card-subtitle>
+        <ion-card-title>{{i.strName}}</ion-card-title>
+        <ion-card-subtitle>{{i.srtEmail}}</ion-card-subtitle>
+        <ion-card-subtitle>Nacido en {{i.date|date}}</ion-card-subtitle>
+        <ion-card-subtitle *ngIf="datosService.blnToggle == true" >{{i.txtNotes}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-button class="postion-btn-delete" color="danger" expand="small" (click)='datosService.removeContacts(i.strName,r)'><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-card>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lista de contactos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista de contactos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-label position="floating">Nombre completo:</ion-label>
+    <ion-input  [(ngModel)]="datosService.name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefono:</ion-label>
+    <ion-input [(ngModel)]="datosService.phone" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email:</ion-label>
+    <ion-input  [(ngModel)]="datosService.email" type="text"></ion-input>
+  </ion-item>
+  <!-- date picker -->
+  <ion-item>
+    <ion-label  position="floating"> Fecha de nacimiento: MM DD YY</ion-label>
+    <ion-datetime [(ngModel)]="datosService.date" displayFormat="DD/MMM/YYYY" placeholder="Select Date"></ion-datetime>
+  </ion-item>
+  <!-- termina date picker -->
+  <ion-item>
+    <ion-label position="floating">Notas:</ion-label>
+    <ion-textarea [(ngModel)]="datosService.notes" type="text"></ion-textarea>
+  </ion-item>
+  <ion-list>
+    <ion-radio-group  [(ngModel)]="datosService.strGenre">
+      <ion-label>Hombre:</ion-label>
+      <ion-radio value = "man"></ion-radio>
+      <ion-label>Mujer:</ion-label>
+      <ion-radio value ="women" ></ion-radio>
+    </ion-radio-group>
+  </ion-list>
+  <br>
+
+  <ion-button (click)='datosService.addContact()' expand="full"><ion-icon name="add-circle-outline" ></ion-icon></ion-button>
+  <div *ngIf="datosService.arrContacts.length == 0">
+    <h1>No se han añadido contactos</h1>
+  </div>
+  <app-card></app-card>
+    <!-- <div *ngIf="datosService.arrContacts.length > 0">
+
+      <h1>Mis contactos</h1>
+      <ion-card>
+        <ion-item>
+          <ion-label>Ver notas:</ion-label>
+          <ion-toggle (ionChange)="datosService.isPresent($event)"></ion-toggle>
+        </ion-item>
+      </ion-card>
+      <div *ngFor="let i of datosService.arrContacts; let r = index">
+
+        <ion-card  [ngClass]="{'man': i.genero ===  'man' , 'women': i.genero === 'women'}" >
+          <ion-card-header>
+            <ion-card-subtitle>{{i.intPhone}}</ion-card-subtitle>
+            <ion-card-title>{{i.strName}}</ion-card-title>
+            <ion-card-subtitle>{{i.srtEmail}}</ion-card-subtitle>
+            <ion-card-subtitle *ngIf="datosService.blnToggle == true" >{{i.txtNotes}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-button class="postion-btn-delete" color="danger" expand="small" (click)='datosService.removeContacts(i.strName,r)'><ion-icon name="close-outline"></ion-icon></ion-button>
+        </ion-card>
+        
+        <app-card></app-card>
+      </div>
+    </div> -->
+
+
+
+
+</ion-content>
