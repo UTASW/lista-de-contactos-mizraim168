@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,9 +21,7 @@ export class DatosService {
   email:string;
   notes:Text;
   regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-  constructor(public alertController: AlertController) { 
-    
-  }
+  constructor(public alertController: AlertController) { }
   
   // async presentAlert() {
 

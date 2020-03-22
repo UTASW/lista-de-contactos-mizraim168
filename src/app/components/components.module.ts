@@ -7,7 +7,7 @@ import { CardComponent } from '../components/card/card.component';
 
 
 @NgModule({
-  declarations: [CardComponent],
+  declarations: [CardComponent], //super importante
   imports: [
     CommonModule,
     IonicModule,
